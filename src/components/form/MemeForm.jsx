@@ -1,17 +1,17 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import memData from "../../memData";
 import "./memeForm.css";
 
 export const MemeForm = () => {
-  const [meme, setMeme] = useState("https://i.imgflip.com/1bhk.jpg");
+  const [memeImage, setMemeImage] = useState("https://i.imgflip.com/1bhk.jpg");
   const data = memData.data.memes;
+
   const handleMemeImg = () => {
     const randomMemeIndex = Math.floor(Math.random() * data.length);
     const imgUrl = data[randomMemeIndex].url;
-    setMeme(imgUrl);
-    console.log(imgUrl);
+    setMemeImage(imgUrl);
   };
+
   return (
     <main>
       <form className="form-container">
@@ -33,7 +33,9 @@ export const MemeForm = () => {
           Get a new meme image 🖼
         </button>
       </form>
-      <img src={meme} alt="" />
+      <div className="img-container">
+        <img className="meme-img" src={memeImage} alt="" />
+      </div>
     </main>
   );
 };
