@@ -3,13 +3,19 @@ import memData from "../../memData";
 import "./memeForm.css";
 
 export const MemeForm = () => {
-  const [memeImage, setMemeImage] = useState("https://i.imgflip.com/1bhk.jpg");
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/1bhk.jpg",
+  });
+  const [allMemeImages, setAllMemeImages] = useState(memData);
+  // console.log(allMemeImages.data.memes);
   const data = memData.data.memes;
 
   const handleMemeImg = () => {
     const randomMemeIndex = Math.floor(Math.random() * data.length);
     const imgUrl = data[randomMemeIndex].url;
-    setMemeImage(imgUrl);
+    setMeme(imgUrl);
   };
 
   return (
@@ -34,7 +40,7 @@ export const MemeForm = () => {
         </button>
       </form>
       <div className="img-container">
-        <img className="meme-img" src={memeImage} alt="" />
+        <img className="meme-img" src={meme.randomImage} alt="" />
       </div>
     </main>
   );
