@@ -10,12 +10,12 @@ export const MemeForm = () => {
   });
   const [allMemeImages, setAllMemeImages] = useState(memData);
   // console.log(allMemeImages.data.memes);
-  const data = memData.data.memes;
+  const data = allMemeImages.data.memes;
 
   const handleMemeImg = () => {
     const randomMemeIndex = Math.floor(Math.random() * data.length);
     const imgUrl = data[randomMemeIndex].url;
-    setMeme(imgUrl);
+    setMeme((preMeme) => ({ ...preMeme, randomImage: imgUrl }));
   };
 
   return (
